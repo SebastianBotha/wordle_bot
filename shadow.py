@@ -126,5 +126,26 @@ send_letter("e")
 send_letter("s")
 send_letter("2")
 
+time.sleep(3)
+
+# print cell info 
+check_path = "return document.querySelector('body > game-app').shadowRoot.querySelector('#board > game-row:nth-child(1)').shadowRoot.querySelector('div > game-tile:nth-child(1)').shadowRoot.querySelector('div')"
+check_ele = driver.execute_script(check_path)
+print_ele = check_ele.get_attribute('outerHTML')
+print(print_ele)
+print(type(print_ele))
+
+# absent = letter not in word 
+# present = letter in word, wrong place 
+# correct = letter in write place 
+
+if "absent" in print_ele:
+    print("absent")
+elif "present" in print_ele: 
+    print("present")
+elif "correct" in print_ele:
+    print("correct")
+
+
 time.sleep(5)
 
