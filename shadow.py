@@ -129,22 +129,28 @@ send_letter("2")
 time.sleep(3)
 
 # print cell info 
-check_path = "return document.querySelector('body > game-app').shadowRoot.querySelector('#board > game-row:nth-child(1)').shadowRoot.querySelector('div > game-tile:nth-child(1)').shadowRoot.querySelector('div')"
-check_ele = driver.execute_script(check_path)
-print_ele = check_ele.get_attribute('outerHTML')
-print(print_ele)
-print(type(print_ele))
+guess_number = 1
+block_number = 1
 
-# absent = letter not in word 
-# present = letter in word, wrong place 
-# correct = letter in write place 
-
-if "absent" in print_ele:
-    print("absent")
-elif "present" in print_ele: 
-    print("present")
-elif "correct" in print_ele:
-    print("correct")
+while block_number <=5:
+    check_path = "return document.querySelector('body > game-app').shadowRoot.querySelector('#board > game-row:nth-child({})').shadowRoot.querySelector('div > game-tile:nth-child({})').shadowRoot.querySelector('div')".format(guess_number, block_number)
+    check_ele = driver.execute_script(check_path)
+    print_ele = check_ele.get_attribute('outerHTML')
+    print("letter in block is:", print_ele)
+    
+    # absent = letter not in word 
+    # present = letter in word, wrong place 
+    # correct = letter in write place 
+    if "absent" in print_ele:
+        print("absent")
+    elif "present" in print_ele: 
+        print("present")
+    elif "correct" in print_ele:
+        print("correct")
+    else:
+        print("block empty")
+        
+    block_number = block_number + 1 
 
 
 time.sleep(5)
