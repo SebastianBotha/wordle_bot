@@ -1,3 +1,13 @@
+# TO-DO 
+
+'''
+1) go through all letter submitted and determine first duplicates exist, then fix conditions 
+
+
+
+'''
+
+
 # imports
 import pandas as pd
 import numpy as np
@@ -50,6 +60,8 @@ def next_word(database):
     #database.reset_index(drop=True, inplace=True)
     # selct top response 
     next_word = database.iloc[0][0] 
+    print("found and saved top word", next_word, "will now exclude from db")
+    database.drop(index=database.index[0], axis=0, inplace=True)
     return next_word
     
 def send_letter(letter):
@@ -170,13 +182,23 @@ def correct_letter(database, letter, index):
     #print(evalue_column)
     database.drop(database.index[database[evalue_column] != letter], inplace=True)
 
+def remove_word(database):
+    # next word to submit is always highest prob one so find highest prob then remove row 1 
+    word_var = database.iloc[0][0] 
+    print("remove word ", word_var)
+    database.drop(index=database.index[0], axis=0, inplace=True)
+    word_var = database.iloc[0][0] 
+    print("new word top", word_var)
+    
+
+    
 # =================== main =================================== 
 # 1) get first word to submit
 guess_counter = 1
 submit_word = first_word(data)
 
 # 2) login and ready page for inputs
-time.sleep(1)
+#time.sleep(1)
 # close button mapped to 1 
 send_letter("1")
 time.sleep(3)
@@ -191,10 +213,11 @@ while guess_counter<=6:
     for x in submit_word:
         #print(x)
         send_letter(x)
+        time.sleep(1)
     # enter 
     send_letter("2")
   
-    time.sleep(7)
+    time.sleep(5)
     # evaluete options and modify DB 
     block_number = 1
     while block_number <=5:
@@ -225,7 +248,8 @@ while guess_counter<=6:
             score_counter = score_counter + 1
         else:
             print("block empty")
-            
+        
+       
         block_number = block_number + 1 
     
     # if full word is found 
@@ -236,7 +260,7 @@ while guess_counter<=6:
         
     else: 
         score_counter = 0 
-        # sort/index database & get highest probability word     
+        # sort/index database & get highest probability word  
         submit_word = next_word(data)
         guess_counter = guess_counter +1
         time.sleep(3)
