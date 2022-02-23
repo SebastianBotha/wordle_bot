@@ -1,11 +1,17 @@
 # TO-DO 
 
 '''
-1) go through all letter submitted and determine first duplicates exist, then fix conditions 
+creat index of letters and index of action /arrays
+letters = [o, n, i, o, n]
+actions = [present, absent, absent, correct, present]
 
+1) fill letters with current word letters 
+2) fill actions with corresponding actions 
+3) for each letter in letters 
+    - check if other index has a match / same letter 
+    - if other letter exists with a higher priority than current then make current "blank" else leave priority as is 
+    - run letters and actions through set of functions to change db 
 
-
-'''
 
 
 # imports
@@ -167,7 +173,7 @@ def absent_letter(database, letter):
         # returns an edited database 
         column_var = column_var + 1
 
-def present_letter(database,letter):
+def present_letter(database,letter, index):
     # remove all words that dont contain eval letter 
     
     # evalue which word contains the passed letter - True if word has the letter in it
@@ -175,7 +181,13 @@ def present_letter(database,letter):
     
     # remove all rows that dont contain given letter 
     database.drop(database.index[database['has_letter'] == False], inplace=True)
-
+    
+    #REMOVE LETTER FROM SPECIIFC ROW FOR PRESENT LETTER (KNOW ITS IN WORD AND KNOW THAT ITS NOT IN THAT POSITION)
+    # remove words without unique 
+    evalue_column = "Letter {}".format(index)
+    # print(evalue_column)
+    database.drop(database.index[database[evalue_column] == letter], inplace=True)
+   
 def correct_letter(database, letter, index):
      # remove all words thatdont have eval letter at current index
     evalue_column = "Letter {}".format(index)
@@ -190,7 +202,6 @@ def remove_word(database):
     word_var = database.iloc[0][0] 
     print("new word top", word_var)
     
-
     
 # =================== main =================================== 
 # 1) get first word to submit
@@ -239,7 +250,7 @@ while guess_counter<=6:
         elif "present" in print_ele: 
             # remove all words that dont contain eval letter 
             print("present", eval_letter)
-            present_letter(data, eval_letter)
+            present_letter(data, eval_letter, block_number)
             
         elif "correct" in print_ele:
             # remove all words thatdont have eval letter at current index 
