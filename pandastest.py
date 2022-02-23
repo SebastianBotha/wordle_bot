@@ -2,6 +2,29 @@
 import pandas as pd
 import numpy as np
   
+  
+  
+'''
+creat index of letters and index of action /arrays
+letters = [o, n, i, o, n]
+actions = [present, absent, absent, correct, present]
+
+1) fill letters with current word letters 
+2) fill actions with corresponding actions 
+3) for each letter in letters 
+    - check if other index has a match / same letter 
+    - if other letter exists with a higher priority than current then make current "blank" else leave priority as is 
+    - run letters and actions through set of functions to change db 
+    
+
+'''
+
+letters = [o, n, i, o, n]
+actions = [present, absent, absent, correct, present]
+  
+  
+exit()  
+  
 # create a dictionary with five fields each
 data = {
     'Letter 1':['a', 'b', 'c', 'd', 'e'], 
