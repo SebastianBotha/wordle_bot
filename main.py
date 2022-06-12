@@ -12,7 +12,7 @@ actions = [present, absent, absent, correct, present]
     - if other letter exists with a higher priority than current then make current "blank" else leave priority as is 
     - run letters and actions through set of functions to change db 
 
-
+'''
 
 # imports
 import pandas as pd
@@ -30,12 +30,22 @@ from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 import traceback
 
+
+
+
+
 # ========================= INIT DRIVER ============================================
 options = Options()
 options.add_argument('--incognito')
 options.add_argument("window-size=720,1400")
+
 # ====== use for mac =====
-ChromDriver_path = '/usr/local/Caskroom/chromedriver/97.0.4692.71/chromedriver'
+
+# path to chrome driver: MACBOOK 
+
+browser = webdriver.Chrome()
+
+ChromDriver_path = '/usr/local/Caskroom/chromedriver/101/chromedriver'
 s = Service(ChromDriver_path)
 driver = webdriver.Chrome(service=s)
 driver = webdriver.Chrome(options=options)
@@ -49,7 +59,7 @@ def first_word(data_in):
     data_in = data_in.drop(data_in.index[data_in['Completley unique '] == 0])
     
     # sort based on selected column
-    data_in.sort_values(by=['Full P'], inplace=True, ascending=False)
+    data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
     
     # Visualize the dataframe
     # print(data_in.head(5))
@@ -61,7 +71,7 @@ def first_word(data_in):
 
 def next_word(database):
     # sort based on selected column
-    database.sort_values(by=['Full P'], inplace=True, ascending=False)
+    database.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
 
     #database.reset_index(drop=True, inplace=True)
     # selct top response 
