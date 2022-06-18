@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
   
-  
+#changes
   
 '''
 creat index of letters and index of action /arrays

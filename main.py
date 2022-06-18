@@ -39,7 +39,7 @@ options = Options()
 options.add_argument('--incognito')
 options.add_argument("window-size=720,1400")
 
-# ====== use for mac =====
+# ====== use for mac =======================
 
 # path to chrome driver: MACBOOK 
 
