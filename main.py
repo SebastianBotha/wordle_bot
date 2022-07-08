@@ -30,7 +30,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 import traceback
 
-
+import chromedriver_autoinstaller as chromedriver
+chromedriver.install()
 
 
 
@@ -41,7 +42,7 @@ options.add_argument("window-size=720,1400")
 
 # ====== use for mac =======================
 
-# path to chrome driver: MACBOOK 
+# path to chrome driver: MAC
 
 browser = webdriver.Chrome()
 
@@ -59,10 +60,11 @@ def first_word(data_in):
     data_in = data_in.drop(data_in.index[data_in['Completley unique '] == 0])
     
     # sort based on selected column
-    data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
+    data_in.sort_values(by=['Full P'], inplace=True, ascending=False)
+    #data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
     
     # Visualize the dataframe
-    # print(data_in.head(5))
+    print(data_in.head(5))
 
     # selct top response 
     first_word_data = data_in.iloc[0][0]
@@ -81,34 +83,34 @@ def next_word(database):
     return next_word
     
 def send_letter(letter):
-    Close_p = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-modal').shadowRoot.querySelector('div > div > div > game-icon').shadowRoot.querySelector('svg')"
-    path_a = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(2)')"
-    path_b = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(6)')"
-    path_c = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(4)')"
-    path_d = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(4)')"
-    path_e = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(3)')"
-    path_f = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(5)')"
-    path_g = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(6)')"
-    path_h = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(7)')"
-    path_i = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(8)')"
-    path_j = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(8)')"
-    path_k = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(9)')"
-    path_l = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(10)')"
-    path_m = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(8)')"
-    path_n = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(7)')"
-    path_o = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(9)')"
-    path_p = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(10)')"
-    path_q = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(1)')"
-    path_r = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(4)')"
-    path_s = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(2) > button:nth-child(3)')"
-    path_t = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(5)')"
-    path_u = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(7)')"
-    path_v = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(5)')"
-    path_w = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(2)')"
-    path_x = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(3)')"
-    path_y = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(1) > button:nth-child(6)')"
-    path_z = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(2)')"
-    path_enter = "return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(1)')"
+    Close_p ='return document.querySelector("#wordle-app-game > div.Modal-module_modalOverlay__81ZCi > div > div > svg")'
+    path_a = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(2)')"
+    path_b = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(6)')"
+    path_c = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(4)')"
+    path_d = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(4)')"
+    path_e = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(3)')"
+    path_f = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(5)')"
+    path_g = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(6)')"
+    path_h = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(7)')"
+    path_i = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(8)')"
+    path_j = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(8)')"
+    path_k = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(9)')"
+    path_l = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(10)')"
+    path_m = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(8)')"
+    path_n = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(7)')"
+    path_o = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(9)')"
+    path_p = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(10)')"
+    path_q = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(1)')"
+    path_r = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(4)')"
+    path_s = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(3)')"
+    path_t = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(5)')"
+    path_u = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(7)')"
+    path_v = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(5)')"
+    path_w = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(2)')"
+    path_x = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(3)')"
+    path_y = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(6)')"
+    path_z = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(2)')"
+    path_enter = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(1)')"
     letter_path ="return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(1)')"
 
     if letter == "a":
@@ -222,7 +224,7 @@ submit_word = first_word(data)
 #time.sleep(1)
 # close button mapped to 1 
 send_letter("1")
-time.sleep(3)
+time.sleep(2)
 
 score_counter = 0
 
@@ -234,7 +236,7 @@ while guess_counter<=6:
     for x in submit_word:
         #print(x)
         send_letter(x)
-        time.sleep(1)
+        time.sleep(2)
     # enter 
     send_letter("2")
   
@@ -242,7 +244,8 @@ while guess_counter<=6:
     # evaluete options and modify DB 
     block_number = 1
     while block_number <=5:
-        check_path = "return document.querySelector('body > game-app').shadowRoot.querySelector('#board > game-row:nth-child({})').shadowRoot.querySelector('div > game-tile:nth-child({})').shadowRoot.querySelector('div')".format(guess_counter, block_number)
+
+        check_path = "return document.querySelector('#wordle-app-game > div.Board-module_boardContainer__cKb-C > div > div:nth-child({}) > div:nth-child({}) > div')".format(guess_counter, block_number)
         check_ele = driver.execute_script(check_path)
         print_ele = check_ele.get_attribute('outerHTML')
         # print("letter in block is:", print_ele)
