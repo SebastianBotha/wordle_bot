@@ -60,8 +60,8 @@ def first_word(data_in):
     data_in = data_in.drop(data_in.index[data_in['Completley unique '] == 0])
     
     # sort based on selected column
-    data_in.sort_values(by=['Full P'], inplace=True, ascending=False)
-    #data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
+    #data_in.sort_values(by=['Full P'], inplace=True, ascending=False)
+    data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
     
     # Visualize the dataframe
     print(data_in.head(5))
