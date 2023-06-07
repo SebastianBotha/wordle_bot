@@ -1,19 +1,3 @@
-# TO-DO 
-
-'''
-creat index of letters and index of action /arrays
-letters = [o, n, i, o, n]
-actions = [present, absent, absent, correct, present]
-
-1) fill letters with current word letters 
-2) fill actions with corresponding actions 
-3) for each letter in letters 
-    - check if other index has a match / same letter 
-    - if other letter exists with a higher priority than current then make current "blank" else leave priority as is 
-    - run letters and actions through set of functions to change db 
-
-'''
-
 # imports
 import pandas as pd
 import numpy as np
@@ -60,8 +44,8 @@ def first_word(data_in):
     data_in = data_in.drop(data_in.index[data_in['Completley unique '] == 0])
     
     # sort based on selected column
-    #data_in.sort_values(by=['Full P'], inplace=True, ascending=False)
-    data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
+    data_in.sort_values(by=['Full P'], inplace=True, ascending=False)
+    #data_in.sort_values(by=['Word usage Frequency '], inplace=True, ascending=False)
     
     # Visualize the dataframe
     print(data_in.head(5))
@@ -83,34 +67,35 @@ def next_word(database):
     return next_word
     
 def send_letter(letter):
-    Close_p ='return document.querySelector("#wordle-app-game > div.Modal-module_modalOverlay__81ZCi > div > div > svg")'
-    path_a = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(2)')"
-    path_b = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(6)')"
-    path_c = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(4)')"
-    path_d = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(4)')"
-    path_e = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(3)')"
-    path_f = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(5)')"
-    path_g = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(6)')"
-    path_h = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(7)')"
-    path_i = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(8)')"
-    path_j = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(8)')"
-    path_k = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(9)')"
-    path_l = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(10)')"
-    path_m = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(8)')"
-    path_n = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(7)')"
-    path_o = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(9)')"
-    path_p = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(10)')"
-    path_q = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(1)')"
-    path_r = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(4)')"
-    path_s = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(2) > button:nth-child(3)')"
-    path_t = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(5)')"
-    path_u = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(7)')"
-    path_v = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(5)')"
-    path_w = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(2)')"
-    path_x = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(3)')"
-    path_y = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(1) > button:nth-child(6)')"
-    path_z = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(2)')"
-    path_enter = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__1HSnn > div:nth-child(3) > button:nth-child(1)')"
+    Close_p ='return document.querySelector("body > div > div > div > div > div.Welcome-module_buttonContainer__K4GEw > button:nth-child(3)")'
+    close_b_2 = 'return document.querySelector("body > div > div > dialog > div > button")'
+    path_a = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(2)')"
+    path_b = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(6)')"
+    path_c = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(4)')"
+    path_d = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(4)')"
+    path_e = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(3)')"
+    path_f = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(5)')"
+    path_g = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(6)')"
+    path_h = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(7)')"
+    path_i = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(8)')"
+    path_j = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(8)')"
+    path_k = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(9)')"
+    path_l = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(10)')"
+    path_m = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(8)')"
+    path_n = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(7)')"
+    path_o = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(9)')"
+    path_p = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(10)')"
+    path_q = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(1)')"
+    path_r = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(4)')"
+    path_s = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(2) > button:nth-child(3)')"
+    path_t = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(5)')"
+    path_u = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(7)')"
+    path_v = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(5)')"
+    path_w = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(2)')"
+    path_x = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(3)')"
+    path_y = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(1) > button:nth-child(6)')"
+    path_z = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(2)')"
+    path_enter = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(1)')"
     letter_path ="return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(1)')"
 
     if letter == "a":
@@ -168,7 +153,9 @@ def send_letter(letter):
     elif letter == "1":
         letter_path = Close_p    
     elif letter == "2":
-        letter_path = path_enter    
+        letter_path = path_enter  
+    elif letter == "3":
+        letter_path =  close_b_2
     
     button_element = driver.execute_script(letter_path)
     button_element.click()
@@ -224,6 +211,10 @@ submit_word = first_word(data)
 #time.sleep(1)
 # close button mapped to 1 
 send_letter("1")
+
+time.sleep(2)
+
+send_letter("3")
 time.sleep(2)
 
 score_counter = 0
@@ -245,7 +236,9 @@ while guess_counter<=6:
     block_number = 1
     while block_number <=5:
 
-        check_path = "return document.querySelector('#wordle-app-game > div.Board-module_boardContainer__cKb-C > div > div:nth-child({}) > div:nth-child({}) > div')".format(guess_counter, block_number)
+        #check_path = "return document.querySelector('#wordle-app-game > div.Board-module_boardContainer__cKb-C > div > div:nth-child({}) > div:nth-child({}) > div')".format(guess_counter, block_number)
+        check_path = "return document.querySelector('#wordle-app-game > div.Board-module_boardContainer__TBHNL > div > div:nth-child({}) > div:nth-child({}) > div')".format(guess_counter, block_number)
+        
         check_ele = driver.execute_script(check_path)
         print_ele = check_ele.get_attribute('outerHTML')
         # print("letter in block is:", print_ele)
