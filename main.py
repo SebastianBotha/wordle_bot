@@ -97,6 +97,7 @@ def send_letter(letter):
     path_z = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(2)')"
     path_enter = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(1)')"
     letter_path ="return document.querySelector('body > game-app').shadowRoot.querySelector('#game > game-keyboard').shadowRoot.querySelector('#keyboard > div:nth-child(3) > button:nth-child(1)')"
+    back_space_path = "return document.querySelector('#wordle-app-game > div.Keyboard-module_keyboard__uYuqf > div:nth-child(3) > button:nth-child(9)')"
 
     if letter == "a":
         letter_path = path_a
@@ -156,6 +157,8 @@ def send_letter(letter):
         letter_path = path_enter  
     elif letter == "3":
         letter_path =  close_b_2
+    elif letter == "4":
+        letter_path = back_space_path
     
     button_element = driver.execute_script(letter_path)
     button_element.click()
@@ -234,6 +237,7 @@ while guess_counter<=6:
     time.sleep(5)
     # evaluete options and modify DB 
     block_number = 1
+    block_empty = 0 
     while block_number <=5:
 
         #check_path = "return document.querySelector('#wordle-app-game > div.Board-module_boardContainer__cKb-C > div > div:nth-child({}) > div:nth-child({}) > div')".format(guess_counter, block_number)
@@ -265,9 +269,29 @@ while guess_counter<=6:
             score_counter = score_counter + 1
         else:
             print("block empty")
+            block_empty = 1 
         
-       
         block_number = block_number + 1 
+            
+         
+    if block_empty == 1:
+        # if block is empty then word was not accepted so remove from submission    
+        
+        send_letter("4")
+        time.sleep(1)
+        send_letter("4")
+        time.sleep(1)
+        send_letter("4")
+        time.sleep(1)
+        send_letter("4")
+        time.sleep(1)
+        send_letter("4")
+        time.sleep(1)
+        send_letter("4")
+        guess_counter = guess_counter -1
+        block_empty = 0 
+        
+            
     
     # if full word is found 
     if score_counter == 5: 
